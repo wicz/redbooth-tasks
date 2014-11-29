@@ -9,5 +9,6 @@ gem "rails", "4.2.0.beta4"
 group :development, :test do
   gem "rspec-rails",  "~> 3.1.0"
   gem "capybara",     "~> 2.4.4"
+  gem "guard-rspec",  "~> 4.3.1"
 end
 
