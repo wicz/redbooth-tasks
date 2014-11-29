@@ -15,7 +15,11 @@ class TasksController < ApplicationController
   end
 
   def user_signed_in?
-    false
+    !!current_user
+  end
+
+  def current_user
+    session[:user]
   end
 end
 

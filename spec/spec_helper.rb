@@ -83,3 +83,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def require_spec_support(file)
+  require File.expand_path("spec/support/#{file}")
+end
+
+def require_app(file)
+  require File.expand_path("app/#{file}")
+end
+
