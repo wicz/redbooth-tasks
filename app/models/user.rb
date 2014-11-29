@@ -1,6 +1,8 @@
 # encoding: utf-8
 
 class User
+  include ActiveModel::Validations
+
   attr_accessor :name, :email, :id, :token
 
   def self.build_from_auth_hash(params = {})
@@ -12,8 +14,6 @@ class User
     end
   end
 
-  def valid?
-    true
-  end
+  validates_with UserValidator
 end
 
