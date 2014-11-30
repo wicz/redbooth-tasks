@@ -13,7 +13,8 @@ module SessionsHelper
   end
 
   def current_user
-    @current_user ||= User.new(session[:user])
+    @current_user ||=
+      (user = User.new(session[:user])).valid? ?  user : nil
   end
 end
 
