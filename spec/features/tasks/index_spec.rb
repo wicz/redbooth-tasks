@@ -1,11 +1,22 @@
 # encoding: utf-8
 require "rails_helper"
+require "webmock/rspec"
+require_spec_support "authentication"
+require_spec_support "pages/tasks_page"
 
-describe "Tasks", "unauthorized access" do
-  it "shows error message" do
-    visit tasks_path
+describe "List tasks" do
+  let(:tasks) { RedboothTasks::Pages::Tasks.new(page) }
 
-    expect(page).to have_content("Access denied")
+  before do
+    stub_request(:get, /.*redbooth.*/)
+      .to_return(body: File.read(Rails.root.join("spec/fixtures/api/tasks.json")))
+  end
+
+  it do
+    visit     root_path
+    click_on  "Sign in"
+
+    expect(tasks.size).to eq(2)
   end
 end
 
