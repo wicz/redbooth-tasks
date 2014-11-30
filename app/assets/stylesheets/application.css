@@ -14,7 +14,57 @@
  *= require_self
  */
 
-li.task.resolved {
+html, body {
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+.resolved {
   text-decoration: line-through;
 }
 
+.container {
+  width: 750px;
+}
+
+.jumbotron {
+  margin: 60px auto;
+  text-align: center;
+}
+
+.logo {
+  color: #C70000;
+}
+
+.alert-error {
+  color: #A94442;
+  background-color: #F2DEDE;
+  border-color: #EBCCD1;
+}
+
+.caption {
+  position: relative;
+  height: 150px;
+}
+
+.meta {
+  width: 98%;
+  position: absolute;
+  bottom: 10px;
+}
+
+.task-open .task-status {
+  background-color: #C70000;
+}
+
+.task-date {
+  font-size: 80%;
+}
+
+.task-name {
+  font-weight: 400;
+}
+
+.task-description {
+  font-size: 95%;
+}

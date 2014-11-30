@@ -3,22 +3,13 @@ require "spec_helper"
 require_app "decorators/task_decorator"
 
 describe TaskDecorator, "#css_classes" do
-  let(:task) { double(:task, resolved?: false) }
+  let(:task) { double(status: "resolved") }
 
-  it "includes task" do
+  it "includes task and task-status" do
     css = TaskDecorator.new(task).css_classes
 
     expect(css).to include("task")
-  end
-
-  context "when task is resolved" do
-    it "includes resolved" do
-      allow(task).to receive_messages(resolved?: true)
-
-      css = TaskDecorator.new(task).css_classes
-
-      expect(css).to include("resolved")
-    end
+    expect(css).to include("task-resolved")
   end
 end
 

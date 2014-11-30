@@ -1,11 +1,30 @@
-<h1>My Tasks</h1>
+<%= render("shared/header") %>
 
-<ul>
+<div class="row">
   <% tasks.each do |task| %>
-    <li class="<%= task.css_classes %>">
-      <%= task.name %>
-      <%= button_to("Mark resolved", mark_resolved_task_path(task.id), method: :put) %>
-    </li>
+    <div class="col-md-6 <%= task.css_classes %>">
+      <div class="thumbnail">
+        <span class="task-status pull-right label label-default"><%= task.status %></span>
+        <div class="caption">
+          <h5 class="task-name"><%= task.name %></h5>
+          <p class="task-description"><%= task.description %></p>
+          <div class="meta">
+            <div class="row">
+              <div class="col-md-10 task-date text-muted">
+                <%= task.created_at %>
+              </div>
+              <div class="col-md-2">
+                <% unless task.resolved? %>
+                  <%= button_to(mark_resolved_task_path(task.id), method: :put, class: "btn btn-xs") do %>
+                    <i class="fa fa-archive"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 

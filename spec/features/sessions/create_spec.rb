@@ -12,7 +12,7 @@ describe "Sign in with Redbooth" do
     visit     root_path
     click_on  "Sign in"
 
-    expect(page).to have_content("My Tasks")
+    expect(page).to have_content("Sign out")
   end
 end
 

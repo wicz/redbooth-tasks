@@ -13,7 +13,7 @@ module RedboothTasks::Pages
     end
 
     def mark_resolved
-      within(element) { click_on("Mark resolved") }
+      within(element) { find(:xpath, "//button").click }
     end
 
     private
@@ -55,7 +55,7 @@ module RedboothTasks::Pages
     attr_reader :tasks
 
     def load_tasks
-      page.all("li.task").map do |el|
+      page.all(".task").map do |el|
         Task.new(el)
       end
     end

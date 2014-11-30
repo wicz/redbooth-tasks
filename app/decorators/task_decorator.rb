@@ -3,11 +3,13 @@ require "delegate"
 
 class TaskDecorator < SimpleDelegator
   def css_classes
-    css = ["task"]
+    "task task-#{status}"
+  end
 
-    css << "resolved" if resolved?
+  def created_at
+    at = Time.at(__getobj__.created_at)
 
-    css.join(" ")
+    I18n.l(at, format: :long)
   end
 end
 
