@@ -1,10 +1,13 @@
-source "https://rubygems.org"
+source  "https://rubygems.org"
+ruby    "2.1.5"
 
 gem "rails", "4.2.0.beta4"
 
-#gem "sass-rails",   "~> 5.0.0.beta1"
-gem "uglifier",     ">= 1.3.0"
-#gem "jquery-rails", "~> 4.0.0.beta2"
+group :production do
+  gem "uglifier",       ">= 1.3.0"
+  gem "unicorn",        "~> 4.8.3"
+  gem "rails_12factor", "~> 0.0.3"
+end
 
 gem "omniauth-redbooth",  "~> 0.0.2"
 gem "redbooth-ruby",      "~> 0.0.5"
@@ -16,6 +19,6 @@ group :development, :test do
 end
 
 group :test do
-  gem "webmock",      "~> 1.20.4"
+  gem "webmock", "~> 1.20.4"
 end
 
