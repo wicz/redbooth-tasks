@@ -2,7 +2,10 @@
 
 <ul>
   <% tasks.each do |task| %>
-    <li class="<%= task.css_classes %>"><%= task.name %></li>
+    <li class="<%= task.css_classes %>">
+      <%= task.name %>
+      <%= button_to("Mark resolved", mark_resolved_task_path(task.id), method: :put) %>
+    </li>
   <% end %>
 </ul>
 
