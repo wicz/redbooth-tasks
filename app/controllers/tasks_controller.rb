@@ -8,7 +8,7 @@ class TasksController < ApplicationController
   def index
     @tasks = task_reader.get_tasks(assigned_user_id: current_user.id)
 
-    render(:index, locals: { tasks: tasks })
+    render(:index, locals: { tasks: decorate(tasks) })
   end
 
   private

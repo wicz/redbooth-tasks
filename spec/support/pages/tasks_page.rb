@@ -11,13 +11,14 @@ module RedboothTasks::Pages
 
     def each(&block)
       tasks.each(&block)
-      #do |task|
-        #yield task
-      #end
     end
 
-    def size
-      tasks.size
+    def resolved
+      select { |task| task[:class].include?("resolved") }
+    end
+
+    def count
+      tasks.count
     end
 
     private

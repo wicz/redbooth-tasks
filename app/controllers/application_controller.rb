@@ -1,5 +1,16 @@
+# encoding: utf-8
+
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+
+  protected
+
+  def decorate(object)
+    if object.respond_to?(:map)
+      object.map { |item| decorate(item) }
+    else
+      "#{object.class}Decorator".constantize.new(object)
+    end
+  end
 end
+

@@ -2,7 +2,7 @@
 
 <ul>
   <% tasks.each do |task| %>
-    <li class="task"><%= task.name %></li>
+    <li class="<%= task.css_classes %>"><%= task.name %></li>
   <% end %>
 </ul>
 

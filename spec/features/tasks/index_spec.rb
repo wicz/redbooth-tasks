@@ -12,11 +12,12 @@ describe "List tasks" do
       .to_return(body: File.read(Rails.root.join("spec/fixtures/api/tasks.json")))
   end
 
-  it do
+  it "has two tasks, with one already resolved" do
     visit     root_path
     click_on  "Sign in"
 
-    expect(tasks.size).to eq(2)
+    expect(tasks.count).to           eq(2)
+    expect(tasks.resolved.count).to  eq(1)
   end
 end
 
