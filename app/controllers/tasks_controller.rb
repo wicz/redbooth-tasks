@@ -6,7 +6,19 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    render(:index)
+    @tasks = task_reader.get_tasks(assigned_user_id: current_user.id)
+
+    render(:index, locals: { tasks: tasks })
+  end
+
+  private
+
+  attr_reader :tasks
+
+  def task_reader
+    api_client = RedboothRuby::Client.new(RedboothRuby::Session.new(token: current_user.token))
+
+    Tasks::GetTasks.new(api_client)
   end
 end
 
