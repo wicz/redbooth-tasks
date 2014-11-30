@@ -9,6 +9,8 @@ class TasksController < ApplicationController
     @tasks = task_reader.get_tasks(assigned_user_id: current_user.id)
 
     render(:index, locals: { tasks: decorate(tasks) })
+  rescue Tasks::NotAuthorizedError
+    redirect_to(root_path)
   end
 
   def mark_resolved
