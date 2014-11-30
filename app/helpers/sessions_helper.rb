@@ -13,7 +13,7 @@ module SessionsHelper
   end
 
   def current_user
-    session[:user]
+    @current_user ||= User.new(session[:user])
   end
 end
 

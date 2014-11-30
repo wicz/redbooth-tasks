@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class User
-  include ActiveModel::Validations
+  include ActiveModel::Model
 
   attr_accessor :name, :email, :id, :token
 
@@ -12,6 +12,10 @@ class User
       user.id     = params["uid"]
       user.token  = params["credentials"]["token"]
     end
+  end
+
+  def as_json(options = {})
+    super(only: %w(name email id token)).merge(options)
   end
 
   validates_with UserValidator
