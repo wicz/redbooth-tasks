@@ -34,7 +34,7 @@ class TasksController < ApplicationController
   end
 
   def api_client
-    RedboothRuby::Client.new(RedboothRuby::Session.new(token: current_user.token))
+    Tasks::APIClient.new(session)
   end
 end
 

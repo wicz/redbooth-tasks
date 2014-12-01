@@ -5,7 +5,8 @@ class SessionsController < ApplicationController
     user = User.build_from_auth_hash(auth_hash)
 
     if user.valid?
-      session[:user] = user
+      session[:user]        = user
+      session[:credentials] = auth_hash["credentials"]
 
       redirect_to(tasks_path)
     else
